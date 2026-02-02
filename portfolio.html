@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Yesu Doss - MERN Stack Developer | Portfolio showcasing web development projects, skills in MongoDB, Express.js, React, and Node.js">
+    <meta name="keywords"
+        content="MERN Stack Developer, React Developer, Full Stack Developer, Web Developer, Portfolio">
+    <meta name="author" content="Yesu Doss">
+
+    <title>Yesu Doss | Full Stack Developer</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Yellow and Blue Theme */
+            --color-bg-primary: #ffffff;
+            --color-bg-secondary: #f8f9fa;
+            --color-text-primary: #1E3A8A;
+            --color-text-secondary: #4B5563;
+            --color-accent-yellow: #FFD700;
+            --color-accent-blue: #1E3A8A;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
+            --font-size-6xl: 4rem;
+
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+
+            --transition-base: 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent-blue);
+        }
+
+        h1 {
+            font-size: var(--font-size-5xl);
+        }
+
+        h2 {
+            font-size: var(--font-size-4xl);
+        }
+
+        h3 {
+            font-size: var(--font-size-3xl);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+
+        a {
+            color: var(--color-accent-blue);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        a:hover {
+            color: var(--color-accent-yellow);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .section {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            font-size: var(--font-size-4xl);
+            color: var(--color-accent-blue);
+        }
+
+        .card {
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-accent-blue);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-base);
+        }
+
+        .card:hover {
+            border-color: var(--color-accent-yellow);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent-yellow);
+            color: var(--color-accent-blue);
+            border: 2px solid var(--color-accent-yellow);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-blue);
+            color: var(--color-accent-yellow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--color-accent-blue);
+            color: var(--color-accent-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-accent-blue);
+            color: var(--color-accent-yellow);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--color-bg-primary);
+            border-bottom: 2px solid var(--color-accent-blue);
+            padding: var(--spacing-sm) 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--color-accent-blue);
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--color-accent-blue);
+        }
+
+        .navbar-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-accent-blue);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggle {
+                display: flex;
+            }
+
+            .navbar-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-bg-primary);
+                flex-direction: column;
+                align-items: center;
+                padding: var(--spacing-lg);
+                border-bottom: 2px solid var(--color-accent-blue);
+                display: none;
+                z-index: 999;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg-primary);
+            padding: var(--spacing-2xl) 0;
+        }
+
+        .hero-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: var(--font-size-6xl);
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-accent-blue);
+        }
+
+        .gradient-text {
+            color: var(--color-accent-yellow);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-3xl);
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-description {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .hero-social {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-bg-primary);
+            border: 2px solid var(--color-accent-blue);
+            border-radius: 50%;
+            color: var(--color-accent-blue);
+            transition: all var(--transition-base);
+        }
+
+        .social-link:hover {
+            background: var(--color-accent-yellow);
+            border-color: var(--color-accent-yellow);
+            color: var(--color-accent-blue);
+        }
+
+        .hero-img-wrapper {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto var(--spacing-lg);
+            position: relative;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-yellow));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--color-bg-primary);
+            transition: var(--transition-base);
+        }
+
+        .hero-img:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            gap: var(--spacing-xl);
+        }
+
+        .about-text h3 {
+            color: var(--color-accent-blue);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .info-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .info-icon {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-yellow);
+            border-radius: var(--radius-md);
+            color: var(--color-accent-blue);
+        }
+
+        .info-content h4 {
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+        }
+
+        .info-content p,
+        .info-content a {
+            font-size: var(--font-size-base);
+            color: var(--color-text-primary);
+            margin: 0;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--color-bg-primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-2xl);
+        }
+
+        .category-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-accent-blue);
+            text-align: center;
+        }
+
+        .skills-list {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .skill-card {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+        }
+
+        .skill-card:hover {
+            border-color: var(--color-accent-yellow);
+        }
+
+        .skill-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-yellow);
+            border-radius: var(--radius-sm);
+            color: var(--color-accent-blue);
+        }
+
+        .skill-name {
+            font-size: var(--font-size-lg);
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--color-bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .project-card {
+            padding: var(--spacing-xl);
+        }
+
+        .project-card:hover {
+            border-color: var(--color-accent-yellow);
+        }
+
+        .project-number {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            color: var(--color-accent-yellow);
+            opacity: 0.5;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-title {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-description {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .tech-badge {
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-accent-blue);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            color: var(--color-accent-blue);
+            font-weight: 500;
+            transition: all var(--transition-base);
+        }
+
+        .tech-badge:hover {
+            background: var(--color-accent-yellow);
+            border-color: var(--color-accent-yellow);
+        }
+
+        /* Education Section */
+        .education {
+            background: var(--color-bg-primary);
+        }
+
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: var(--spacing-xl);
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--color-accent-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-lg);
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: calc(-1 * var(--spacing-xl) - 9px);
+            top: var(--spacing-lg);
+            width: 18px;
+            height: 18px;
+            background: var(--color-accent-yellow);
+            border-radius: 50%;
+            border: 3px solid var(--color-accent-blue);
+        }
+
+        .timeline-title {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-institution {
+            font-size: var(--font-size-base);
+            color: var(--color-accent-blue);
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        .timeline-year {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-description {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-bg-secondary);
+        }
+
+        .contact-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .contact-intro {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-accent-yellow);
+            border-radius: var(--radius-md);
+            color: var(--color-accent-blue);
+            margin-bottom: var(--spacing-md);
+            transition: all var(--transition-base);
+        }
+
+        .contact-card:hover .contact-icon {
+            background: var(--color-accent-blue);
+            color: var(--color-accent-yellow);
+        }
+
+        .contact-card h3 {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-card a {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            word-break: break-all;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .copy-btn {
+            margin-top: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-md);
+            background: var(--color-bg-primary);
+            border: 1px solid var(--color-accent-blue);
+            border-radius: var(--radius-sm);
+            color: var(--color-accent-blue);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .copy-btn:hover {
+            background: var(--color-accent-yellow);
+            border-color: var(--color-accent-yellow);
+        }
+
+        .footer {
+            text-align: center;
+            padding-top: var(--spacing-2xl);
+            border-top: 2px solid var(--color-accent-blue);
+        }
+
+        .footer p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-accent-blue);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent-yellow);
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --font-size-5xl: 2.5rem;
+                --font-size-4xl: 2rem;
+                --font-size-3xl: 1.75rem;
+                --font-size-6xl: 2.5rem;
+                --spacing-3xl: 3rem;
+                --spacing-2xl: 2rem;
+            }
+
+            .container {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .section {
+                padding: var(--spacing-2xl) 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .about-info,
+            .skills-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-timeline {
+                padding-left: var(--spacing-lg);
+            }
+
+            .timeline-marker {
+                left: calc(-1 * var(--spacing-lg) - 9px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const Navbar = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+            const toggleMenu = () => {
+                setIsMenuOpen(!isMenuOpen);
+            };
+
+            const scrollToSection = (sectionId) => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    setIsMenuOpen(false);
+                }
+            };
+
+            const navLinks = [
+                { name: 'About me', id: 'about' },
+                { name: 'Skills', id: 'skills' },
+                { name: 'Project', id: 'projects' },
+                { name: 'Education', id: 'education' },
+                { name: 'Contact', id: 'contact' }
+            ];
+
+            return (
+                <nav className="navbar">
+                    <div className="container navbar-container">
+                        <a href="#home" className="navbar-logo" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>
+                            A.Yesu Doss
+                        </a>
+
+                        <div className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.id}
+                                    className="nav-link"
+                                    onClick={() => scrollToSection(link.id)}
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
+
+                        <button className="navbar-toggle" onClick={toggleMenu}>
+                            <span className="bar"></span>
+                            <span className="bar"></span>
+                            <span className="bar"></span>
+                        </button>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Hero = () => {
+            const scrollToSection = (sectionId) => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            return (
+                <section className="hero" id="home">
+                    <div className="container">
+                        <div className="hero-text">
+                            <div className="hero-img-wrapper">
+                                <img src="public/hero-image.jpg" alt="Yesu Doss" className="hero-img" />
+                            </div>
+                            <h1 className="hero-title">
+                                Hi, I'm <span className="gradient-text">Yesu Doss</span>
+                            </h1>
+
+                            <p className="hero-description">
+                                Full Stack Developer | AI Enthusiast | Tech Mentor & Internship Lead
+                            </p>
+
+                            <div className="hero-buttons">
+                                <button className="btn btn-primary" onClick={() => scrollToSection('projects')}>
+                                    View Projects
+                                </button>
+                                <button className="btn btn-outline" onClick={() => scrollToSection('contact')}>
+                                    Get In Touch
+                                </button>
+                            </div>
+
+                            <div className="hero-social">
+                                <a href="https://github.com/Doss0802" target="_blank" rel="noopener noreferrer" className="social-link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                    </svg>
+                                </a>
+                                <a href="https://www.linkedin.com/in/yesu-doss-/" target="_blank" rel="noopener noreferrer" className="social-link">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const About = () => {
+            return (
+                <section className="about section" id="about">
+                    <div className="container">
+                        <h2 className="section-title">About Me</h2>
+
+                        <div className="about-content">
+                            <div className="about-text card">
+                                <h3>Objective</h3>
+                                <p>
+                                    I'm a <strong>Full Stack Developer</strong> by day, <strong> AI Enthusiast</strong> by choice. I build modern web solutions with a focus on speed and scalability. I also serve as a <strong>Tech Mentor & Internship Lead</strong> , helping the next generation of developers master the industry's most in-demand skills through hands-on leadership and professional guidance
+                                </p>
+                            </div>
+
+                            <div className="about-info">
+                                <div className="info-card card">
+                                    <div className="info-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <div className="info-content">
+                                        <h4>Email</h4>
+                                        <a href="mailto:Yessudoss8056@gmail.com">Yessudoss8056@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div className="info-card card">
+                                    <div className="info-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                                        </svg>
+                                    </div>
+                                    <div className="info-content">
+                                        <h4>Phone</h4>
+                                        <a href="tel:8056896694">8056896694</a>
+                                    </div>
+                                </div>
+
+                                <div className="info-card card">
+                                    <div className="info-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                            <circle cx="12" cy="10" r="3" />
+                                        </svg>
+                                    </div>
+                                    <div className="info-content">
+                                        <h4>Location</h4>
+                                        <p>Coimbatore, Tamil Nadu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Skills = () => {
+            const technicalSkills = [
+                'HTML / CSS / JS',
+                'Bootstrap',
+                'React / Redux',
+                'Node / Express',
+                'Git / GitHub',
+                'MongoDB'
+            ];
+
+            const softSkills = [
+                'Problem solving',
+                'Team Work',
+                'Adaptability',
+                'Time Management',
+                'Communication',
+                'Curiosity & Initiative'
+            ];
+
+            return (
+                <section className="skills section" id="skills">
+                    <div className="container">
+                        <h2 className="section-title">Skills</h2>
+
+                        <div className="skills-grid">
+                            <div className="skills-category">
+                                <h3 className="category-title">Technical Skills</h3>
+                                <div className="skills-list">
+                                    {technicalSkills.map((skill, index) => (
+                                        <div key={index} className="skill-card card">
+                                            <div className="skill-icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <polyline points="16 18 22 12 16 6" />
+                                                    <polyline points="8 6 2 12 8 18" />
+                                                </svg>
+                                            </div>
+                                            <span className="skill-name">{skill}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="skills-category">
+                                <h3 className="category-title">Soft Skills</h3>
+                                <div className="skills-list">
+                                    {softSkills.map((skill, index) => (
+                                        <div key={index} className="skill-card card">
+                                            <div className="skill-icon">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                                </svg>
+                                            </div>
+                                            <span className="skill-name">{skill}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Projects = () => {
+            const projects = [
+                {
+                    title: 'YesuDoss.in - Personal Portfolio Website',
+                    description: 'Built a personal portfolio website using the MERN stack to showcase projects and skills. Developed responsive React UI with backend APIs using Node.js, Express.js, and MongoDB.',
+                    tech: ['React', 'Node.js', 'Express.js', 'MongoDB'],
+                    link: 'https://yesudoss.in/'
+                },
+                {
+                    title: 'AdoreExports.com - Business Website',
+                    description: 'Developed a full-stack export business website using the MERN stack. Implemented WhatsApp chat button integration to enable direct customer communication and inquiry handling.',
+                    tech: ['MERN Stack', 'WhatsApp API', 'REST APIs'],
+                    link: 'https://adorexport.com/'
+                },
+                {
+                    title: 'Delight Foods',
+                    description: 'Developed a company website using the MERN stack to present products and business details. Implemented REST APIs and enquiry handling with MongoDB integration.',
+                    tech: ['MongoDB', 'Express.js', 'React', 'Node.js']
+                }
+            ];
+
+            const handleCardClick = (link) => {
+                if (link) {
+                    window.open(link, '_blank', 'noopener,noreferrer');
+                }
+            };
+
+            return (
+                <section className="projects section" id="projects">
+                    <div className="container">
+                        <h2 className="section-title">Project Experience</h2>
+
+                        <div className="projects-grid">
+                            {projects.map((project, index) => (
+                                <div
+                                    key={index}
+                                    className="project-card card"
+                                    onClick={() => handleCardClick(project.link)}
+                                    style={project.link ? { cursor: 'pointer' } : {}}
+                                >
+                                    <div className="project-number">0{index + 1}</div>
+                                    <h3 className="project-title">{project.title}</h3>
+                                    <p className="project-description">{project.description}</p>
+                                    <div className="project-tech">
+                                        {project.tech.map((tech, techIndex) => (
+                                            <span key={techIndex} className="tech-badge">{tech}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Education = () => {
+            return (
+                <section className="education section" id="education">
+                    <div className="container">
+                        <h2 className="section-title">Education</h2>
+
+                        <div className="education-timeline">
+                            <div className="timeline-item card">
+                                <div className="timeline-marker"></div>
+                                <div className="timeline-content">
+                                    <h3 className="timeline-title">B.Voc Data Science</h3>
+                                    <p className="timeline-institution">American College, Madurai</p>
+                                    <p className="timeline-year">2021 - 2024</p>
+                                </div>
+                            </div>
+
+                            <div className="timeline-item card">
+                                <div className="timeline-marker"></div>
+                                <div className="timeline-content">
+                                    <h3 className="timeline-title">MERN Stack Development</h3>
+                                    <p className="timeline-institution">AITECH Academy</p>
+                                    <p className="timeline-description">
+                                        Completed a MERN Stack Development course with hands-on experience in building full-stack
+                                        web applications. Gained practical skills in developing responsive and dynamic web solutions
+                                        using MongoDB, Express.js, React.js, and Node.js. Built and deployed multiple real-world
+                                        projects using modern JavaScript.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Contact = () => {
+            const [copied, setCopied] = useState('');
+
+            const copyToClipboard = (text, type) => {
+                navigator.clipboard.writeText(text).then(() => {
+                    setCopied(type);
+                    setTimeout(() => setCopied(''), 2000);
+                });
+            };
+
+            return (
+                <section className="contact section" id="contact">
+                    <div className="container">
+                        <h2 className="section-title">Get In Touch</h2>
+
+                        <div className="contact-content">
+                            <div className="contact-text">
+                                <p className="contact-intro">
+                                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                                    Feel free to reach out!
+                                </p>
+                            </div>
+
+                            <div className="contact-grid">
+                                <div className="contact-card card">
+                                    <div className="contact-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </div>
+                                    <h3>Email</h3>
+                                    <a href="mailto:Yessudoss8056@gmail.com">Yessudoss8056@gmail.com</a>
+                                    <button className="copy-btn" onClick={() => copyToClipboard('Yessudoss8056@gmail.com', 'email')}>
+                                        {copied === 'email' ? 'Copied!' : 'Copy'}
+                                    </button>
+                                </div>
+
+                                <div className="contact-card card">
+                                    <div className="contact-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
+                                        </svg>
+                                    </div>
+                                    <h3>Phone</h3>
+                                    <a href="tel:8056896694">8056896694</a>
+                                    <button className="copy-btn" onClick={() => copyToClipboard('8056896694', 'phone')}>
+                                        {copied === 'phone' ? 'Copied!' : 'Copy'}
+                                    </button>
+                                </div>
+
+                                <div className="contact-card card">
+                                    <div className="contact-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                    </div>
+                                    <h3>GitHub</h3>
+                                    <a href="https://github.com/Doss0802" target="_blank" rel="noopener noreferrer">
+                                        github.com/Doss0802
+                                    </a>
+                                </div>
+
+                                <div className="contact-card card">
+                                    <div className="contact-icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </div>
+                                    <h3>LinkedIn</h3>
+                                    <a href="https://www.linkedin.com/in/yesu-doss-/" target="_blank" rel="noopener noreferrer">
+                                        linkedin.com/in/yesu-doss-/
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer className="footer">
+                            <p>&copy; 2026 Yesu Doss. Built with React & passion.</p>
+                        </footer>
+                    </div>
+                </section>
+            );
+        };
+
+        const App = () => {
+            return (
+                <div className="App">
+                    <Navbar />
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Projects />
+                    <Education />
+                    <Contact />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
